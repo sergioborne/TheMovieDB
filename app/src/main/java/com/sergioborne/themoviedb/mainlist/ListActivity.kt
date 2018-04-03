@@ -1,7 +1,8 @@
-package com.sergioborne.themoviedb
+package com.sergioborne.themoviedb.mainlist
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sergioborne.themoviedb.R
 
 class ListActivity : AppCompatActivity() {
 
