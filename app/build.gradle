@@ -5,29 +5,57 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "com.sergioborne.themoviedb"
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  compileSdkVersion 27
+  defaultConfig {
+    applicationId "com.sergioborne.themoviedb"
+    minSdkVersion 21
+    targetSdkVersion 27
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+  implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+  implementation "com.android.support:design:$project.supportLibraryVersion"
+  implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
+  implementation "com.android.support:cardview-v7:$project.supportLibraryVersion"
+  implementation "com.android.support.constraint:constraint-layout:$project.constraintLayoutVersion"
+
+  //Dagger
+  kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
+  implementation "com.google.dagger:dagger:$project.daggerVersion"
+  kapt "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+  implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+
+  //RxAndroid
+  implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+  implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+
+  //Retrofit
+  implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+  implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+  implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$project.retrofitRxAdapterVersion"
+
+  //Stetho
+  implementation "com.facebook.stetho:stetho:$project.stethoVersion"
+  implementation "com.facebook.stetho:stetho-okhttp3:$project.stethoVersion"
+
+  //Picasso
+  implementation "com.squareup.picasso:picasso:$project.picassoVersion"
+
+  //Testing
+  testImplementation "junit:junit:$project.jUnitVersion"
+  testImplementation "org.mockito:mockito-core:$project.mockitoVersion"
 }
