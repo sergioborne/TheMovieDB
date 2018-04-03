@@ -1,0 +1,1 @@
+package com.sergioborne.themoviedb.diimport android.content.Contextimport com.sergioborne.themoviedb.TMDBApplicationimport dagger.Moduleimport dagger.Providesimport javax.inject.Singleton@Moduleclass AppModule {  @Provides  @Singleton  fun provideContext(application: TMDBApplication): Context {    return application.applicationContext  }}
