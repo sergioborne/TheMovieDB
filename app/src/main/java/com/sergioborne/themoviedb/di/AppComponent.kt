@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
-  AndroidInjectionModule::class, AppModule::class, BuildersModule::class]
+  AndroidInjectionModule::class, AppModule::class, BuildersModule::class, NetworkModule::class]
 )
 interface AppComponent {
   @Component.Builder

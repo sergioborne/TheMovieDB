@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../apikeys.gradle'
+
 android {
   compileSdkVersion 27
   defaultConfig {
