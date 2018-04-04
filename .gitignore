@@ -33,4 +33,3 @@ out/
 # Gradle files
 .gradle/
 build/
-/apikeys.gradle
