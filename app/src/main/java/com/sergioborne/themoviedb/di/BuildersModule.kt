@@ -6,12 +6,10 @@ import com.sergioborne.themoviedb.mainlist.ui.MainListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
-class BuildersModule {
-  @Module
-  abstract class BuildersModule {
 
-    @ContributesAndroidInjector(modules = [MainListModule::class, MainListViewModule::class])
-    abstract fun bindMainListActivity(): MainListActivity
-  }
+@Module
+abstract class BuildersModule {
+
+  @ContributesAndroidInjector(modules = [MainListModule::class, MainListViewModule::class])
+  abstract fun bindMainListActivity(): MainListActivity
 }

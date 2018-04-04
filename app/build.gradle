@@ -1,11 +1,10 @@
-apply from: '../apikeys.gradle'
-
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: '../apikeys.gradle'
 
 android {
   compileSdkVersion 27
@@ -17,7 +16,7 @@ android {
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-    buildConfigField "String", "TheMovieDBApiKey", THE_MOVIE_DB_API_KEY
+    buildConfigField "String", "TheMovieDBApiKey", "\"" + THE_MOVIE_DB_API_KEY + "\""
   }
 
   buildTypes {
