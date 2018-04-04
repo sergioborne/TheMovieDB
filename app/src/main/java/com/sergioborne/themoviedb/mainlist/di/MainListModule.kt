@@ -1,5 +1,6 @@
 package com.sergioborne.themoviedb.mainlist.di
 
+import android.content.Context
 import com.sergioborne.themoviedb.common.SchedulerProvider
 import com.sergioborne.themoviedb.common.TheMovieDBAPI
 import com.sergioborne.themoviedb.mainlist.gateway.MainListGateway
@@ -8,6 +9,7 @@ import com.sergioborne.themoviedb.mainlist.network.MoviesService
 import com.sergioborne.themoviedb.mainlist.network.MoviesServiceImpl
 import com.sergioborne.themoviedb.mainlist.presenter.MainListPresenter
 import com.sergioborne.themoviedb.mainlist.presenter.MainListPresenterImpl
+import com.sergioborne.themoviedb.mainlist.ui.MainListAdapter
 import com.sergioborne.themoviedb.mainlist.ui.MainListView
 import dagger.Module
 import dagger.Provides
@@ -33,5 +35,10 @@ class MainListModule {
     mainListGateway: MainListGateway
   ): MainListPresenter {
     return MainListPresenterImpl(mainListView, mainListGateway)
+  }
+
+  @Provides
+  fun provideMainListAdapter(context: Context): MainListAdapter {
+    return MainListAdapter(context)
   }
 }
