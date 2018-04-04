@@ -1,0 +1,1 @@
+package com.sergioborne.themoviedb.mainlist.gatewayimport com.sergioborne.themoviedb.common.OutcomeListenerimport com.sergioborne.tmdbkotlinchallenge.data.Movieinterface MainListGateway {  fun loadMovies(listener: OutcomeListener<List<Movie>>)}

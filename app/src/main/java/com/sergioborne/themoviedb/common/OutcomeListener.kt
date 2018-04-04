@@ -1,0 +1,1 @@
+package com.sergioborne.themoviedb.commoninterface OutcomeListener<T> {  fun success(value: T)  fun error(error: Throwable)}

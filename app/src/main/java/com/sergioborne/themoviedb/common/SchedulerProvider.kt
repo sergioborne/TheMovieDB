@@ -1,0 +1,1 @@
+package com.sergioborne.themoviedb.commonimport io.reactivex.Schedulerinterface SchedulerProvider {  fun mainThreadScheduler(): Scheduler  fun backgroundThreadScheduler(): Scheduler}
