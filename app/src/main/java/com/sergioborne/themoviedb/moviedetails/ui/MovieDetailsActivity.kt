@@ -16,7 +16,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
     @JvmOverloads
     @JvmStatic
-    fun startActivity(context: Context, movieId: Long, movieTitle: String) {
+    fun startActivity(context: Context, movieId: Int, movieTitle: String) {
       val intent = Intent(context, MovieDetailsActivity::class.java)
       intent.putExtra(MOVIE_ID_INTENT_EXTRA, movieId)
       intent.putExtra(MOVIE_TITLE_INTENT_EXTRA, movieTitle)
@@ -24,7 +24,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
     }
   }
 
-  private var movieId: Long = 0
+  private var movieId: Int = 0
   private var movieTitle: String = ""
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
   }
 
   private fun readIntentExtras() {
-    movieId = intent.getLongExtra(MOVIE_ID_INTENT_EXTRA, 0)
+    movieId = intent.getIntExtra(MOVIE_ID_INTENT_EXTRA, 0)
     movieTitle = intent.getStringExtra(MOVIE_TITLE_INTENT_EXTRA)
   }
 

@@ -9,4 +9,6 @@ interface MainListView {
   fun hideLoadingIndicator()
 
   fun showError(messageResId: Int)
+
+  fun openDetails(movieId: Int, movieTitle: String)
 }
