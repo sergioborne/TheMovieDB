@@ -15,11 +15,11 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
 
   private var layoutInflater: LayoutInflater = LayoutInflater.from(context)
   private var list: List<MovieViewModel> = emptyList()
-  private var listener: ((Int, String) -> Unit)? = null
+  private var listener: ((View, Int, String, String) -> Unit)? = null
 
   override fun onCreateViewHolder(
-      parent: ViewGroup,
-      viewType: Int
+    parent: ViewGroup,
+    viewType: Int
   ) = MovieViewHolder(
       layoutInflater.inflate(R.layout.main_list_movie_item, parent, false)
   )
@@ -27,20 +27,22 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
   override fun getItemCount() = list.size
 
   override fun onBindViewHolder(
-      holder: MovieViewHolder,
-      position: Int
+    holder: MovieViewHolder,
+    position: Int
   ) {
     bindItem(holder, list[position])
   }
 
   private fun bindItem(
-      holder: MovieViewHolder,
-      movieViewModel: MovieViewModel
+    holder: MovieViewHolder,
+    movieViewModel: MovieViewModel
   ) {
     holder.movieTitle.text = movieViewModel.title
     Picasso.get().load(movieViewModel.posterPathUrl).into(holder.movieImage)
     holder.container.setOnClickListener {
-      listener?.invoke(movieViewModel.movieId, movieViewModel.title)
+      listener?.invoke(
+          it, movieViewModel.movieId, movieViewModel.title, movieViewModel.posterPathUrl
+      )
     }
   }
 
@@ -49,7 +51,7 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
     notifyDataSetChanged()
   }
 
-  fun setClickListener(listener: (Int, String) -> Unit) {
+  fun setClickListener(listener: (View, Int, String, String) -> Unit) {
     this.listener = listener
   }
 

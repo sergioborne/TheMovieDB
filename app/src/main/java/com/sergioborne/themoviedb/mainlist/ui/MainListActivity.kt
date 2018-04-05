@@ -10,6 +10,8 @@ import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_list.*
 import javax.inject.Inject
+import android.support.v4.app.ActivityOptionsCompat
+import android.view.View
 
 class MainListActivity : AppCompatActivity(), MainListView {
 
@@ -29,7 +31,11 @@ class MainListActivity : AppCompatActivity(), MainListView {
 
   private fun setupRecyclerView() {
     swipe_refresh_layout.setOnRefreshListener { presenter.refreshList() }
-    adapter.setClickListener { (movieId, movieTitle) -> presenter.itemClicked(movieId, movieTitle) }
+    adapter.setClickListener { view, movieId, movieTitle, movieImageUrl ->
+      openDetails(
+          view, movieId, movieTitle, movieImageUrl
+      )
+    }
     movies_list.adapter = adapter
     movies_list.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
   }
@@ -50,7 +56,19 @@ class MainListActivity : AppCompatActivity(), MainListView {
     adapter.updateItems(list)
   }
 
-  override fun openDetails(movieId: Int, movieTitle: String) {
-    MovieDetailsActivity.startActivity(this, movieId, movieTitle)
+  fun openDetails(
+    viewClicked: View,
+    movieId: Int,
+    movieTitle: String,
+    movieImageUrl: String
+  ) {
+    val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+        this,
+        viewClicked.findViewById(R.id.movieImage),
+        "coverImage"
+    )
+    MovieDetailsActivity.startActivity(
+        this, movieId, movieTitle, movieImageUrl, activityOptions.toBundle()!!
+    )
   }
 }
