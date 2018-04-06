@@ -23,11 +23,12 @@ class TMDBApplication : Application(), HasActivityInjector {
         .build()
         .inject(this)
 
-    initStetho()
+    initStethoIfDebug()
   }
 
-  private fun initStetho() {
-    Stetho.initializeWithDefaults(this)
+  private fun initStethoIfDebug() {
+    if (BuildConfig.DEBUG)
+      Stetho.initializeWithDefaults(this)
   }
 
   override fun activityInjector(): AndroidInjector<Activity>? {
