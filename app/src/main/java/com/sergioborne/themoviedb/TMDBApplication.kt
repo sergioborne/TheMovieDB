@@ -2,6 +2,7 @@ package com.sergioborne.themoviedb
 
 import android.app.Activity
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.sergioborne.themoviedb.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -21,6 +22,12 @@ class TMDBApplication : Application(), HasActivityInjector {
         .application(this)
         .build()
         .inject(this)
+
+    initStetho()
+  }
+
+  private fun initStetho() {
+    Stetho.initializeWithDefaults(this)
   }
 
   override fun activityInjector(): AndroidInjector<Activity>? {
