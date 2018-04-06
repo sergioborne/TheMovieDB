@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import com.sergioborne.themoviedb.R
 import com.sergioborne.themoviedb.moviedetails.presenter.MovieDetailsPresenter
 import com.squareup.picasso.Picasso
@@ -39,6 +40,8 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
   @Inject
   lateinit var presenter: MovieDetailsPresenter
+  @Inject
+  lateinit var adapter: SimilarMoviesAdapter
 
   private var movieId: Int = 0
   private var movieTitle: String = ""
@@ -49,9 +52,15 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_movie_details)
     readIntentExtras()
+    setupSimilarMoviesRecyclerView()
     title = movieTitle
     Picasso.get().load(posterPathUrl).into(toolbar_poster_image_view)
     presenter.init(movieId)
+  }
+
+  private fun setupSimilarMoviesRecyclerView() {
+    similar_movies.adapter = adapter
+    similar_movies.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
   }
 
   private fun readIntentExtras() {
@@ -65,7 +74,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
   }
 
   override fun showSimilarMovies(list: List<SimilarMovieViewModel>) {
-
+    adapter.updateItems(list)
   }
 
   override fun showError(messageResId: Int) {

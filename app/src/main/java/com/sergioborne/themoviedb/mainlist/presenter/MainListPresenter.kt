@@ -1,1 +1,1 @@
-package com.sergioborne.themoviedb.mainlist.presenterinterface MainListPresenter {  fun init()  fun refreshList()  fun itemClicked(movieId: Int, movieTitle: String)}
+package com.sergioborne.themoviedb.mainlist.presenterinterface MainListPresenter {  fun init()  fun refreshList()}
