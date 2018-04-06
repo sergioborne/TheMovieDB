@@ -8,7 +8,7 @@ import com.sergioborne.themoviedb.R
 import com.sergioborne.themoviedb.mainlist.presenter.MainListPresenter
 import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsActivity
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.main_list_activity.*
 import javax.inject.Inject
 import android.support.v4.app.ActivityOptionsCompat
 import android.view.View
@@ -23,7 +23,7 @@ class MainListActivity : AppCompatActivity(), MainListView {
   override fun onCreate(savedInstanceState: Bundle?) {
     AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_list)
+    setContentView(R.layout.main_list_activity)
 
     setupRecyclerView()
     presenter.init()
@@ -64,7 +64,7 @@ class MainListActivity : AppCompatActivity(), MainListView {
   ) {
     val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
         this,
-        viewClicked.findViewById(R.id.movieImage),
+        viewClicked.findViewById(R.id.movie_image),
         "coverImage"
     )
     MovieDetailsActivity.startActivity(

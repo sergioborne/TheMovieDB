@@ -1,4 +1,4 @@
-package com.sergioborne.themoviedb.common
+package com.sergioborne.themoviedb.common.network
 
 import com.sergioborne.themoviedb.moviedetails.data.MovieDetails
 import com.sergioborne.tmdbkotlinchallenge.data.Page

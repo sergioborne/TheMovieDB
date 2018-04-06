@@ -1,6 +1,6 @@
 package com.sergioborne.themoviedb.moviedetails.network
 
-import com.sergioborne.themoviedb.common.TheMovieDBAPI
+import com.sergioborne.themoviedb.common.network.TheMovieDBAPI
 import com.sergioborne.themoviedb.moviedetails.data.MovieDetails
 import com.sergioborne.tmdbkotlinchallenge.data.Movie
 import io.reactivex.Observable

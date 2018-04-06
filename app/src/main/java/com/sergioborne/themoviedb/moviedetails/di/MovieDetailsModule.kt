@@ -2,7 +2,7 @@ package com.sergioborne.themoviedb.moviedetails.di
 
 import android.content.Context
 import com.sergioborne.themoviedb.common.SchedulerProvider
-import com.sergioborne.themoviedb.common.TheMovieDBAPI
+import com.sergioborne.themoviedb.common.network.TheMovieDBAPI
 import com.sergioborne.themoviedb.moviedetails.gateway.MovieDetailsGateway
 import com.sergioborne.themoviedb.moviedetails.gateway.MovieDetailsGatewayImpl
 import com.sergioborne.themoviedb.moviedetails.network.MovieDetailsService

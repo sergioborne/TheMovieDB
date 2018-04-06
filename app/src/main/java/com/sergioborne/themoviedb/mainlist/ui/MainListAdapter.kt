@@ -56,8 +56,8 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
   }
 
   class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val movieImage: ImageView = itemView.movieImage
-    val movieTitle: TextView = itemView.movieTitle
+    val movieImage: ImageView = itemView.movie_image
+    val movieTitle: TextView = itemView.movie_title
     val container: View = itemView.container
   }
 

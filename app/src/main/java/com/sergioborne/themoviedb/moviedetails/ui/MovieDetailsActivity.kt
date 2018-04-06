@@ -10,9 +10,9 @@ import com.sergioborne.themoviedb.R
 import com.sergioborne.themoviedb.moviedetails.presenter.MovieDetailsPresenter
 import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.activity_movie_details.*
-import kotlinx.android.synthetic.main.content_movie_details.*
+import kotlinx.android.synthetic.main.main_list_activity.*
+import kotlinx.android.synthetic.main.movie_details_activity.*
+import kotlinx.android.synthetic.main.movie_details_content.*
 import javax.inject.Inject
 
 class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
@@ -50,7 +50,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
   override fun onCreate(savedInstanceState: Bundle?) {
     AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_movie_details)
+    setContentView(R.layout.movie_details_activity)
     readIntentExtras()
     setupSimilarMoviesRecyclerView()
     title = movieTitle

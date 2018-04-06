@@ -3,4 +3,6 @@
 
   <string name="default_error_message">An error occurred. Please try again.</string>
 
+  <string name="movie_details_similar_movies">Similar Movies</string>
+
 </resources>
