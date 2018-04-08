@@ -46,8 +46,14 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
     }
   }
 
-  fun updateItems(newList: List<MovieViewModel>) {
-    this.list = newList
+  fun appendItems(newItems: List<MovieViewModel>) {
+    val sizeBefore = this.list.size
+    this.list += newItems
+    notifyItemRangeInserted(sizeBefore, this.list.size)
+  }
+
+  fun clearItems() {
+    this.list = emptyList()
     notifyDataSetChanged()
   }
 

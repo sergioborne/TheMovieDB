@@ -11,6 +11,7 @@ import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.main_list_activity.*
 import javax.inject.Inject
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v7.widget.RecyclerView
 import android.view.View
 
 class MainListActivity : AppCompatActivity(), MainListView {
@@ -19,6 +20,8 @@ class MainListActivity : AppCompatActivity(), MainListView {
   lateinit var presenter: MainListPresenter
   @Inject
   lateinit var adapter: MainListAdapter
+
+  private lateinit var gridLayoutManager: GridLayoutManager
 
   override fun onCreate(savedInstanceState: Bundle?) {
     AndroidInjection.inject(this)
@@ -37,7 +40,9 @@ class MainListActivity : AppCompatActivity(), MainListView {
       )
     }
     movies_list.adapter = adapter
-    movies_list.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
+    gridLayoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+    movies_list.layoutManager = gridLayoutManager
+    movies_list.addOnScrollListener(BottomScrollListener())
   }
 
   override fun showLoadingIndicator() {
@@ -53,10 +58,14 @@ class MainListActivity : AppCompatActivity(), MainListView {
   }
 
   override fun updateMoviesList(list: List<MovieViewModel>) {
-    adapter.updateItems(list)
+    adapter.appendItems(list)
   }
 
-  fun openDetails(
+  override fun clearMovieList() {
+    adapter.clearItems()
+  }
+
+  private fun openDetails(
     viewClicked: View,
     movieId: Int,
     movieTitle: String,
@@ -70,5 +79,23 @@ class MainListActivity : AppCompatActivity(), MainListView {
     MovieDetailsActivity.startActivity(
         this, movieId, movieTitle, movieImageUrl, activityOptions.toBundle()!!
     )
+  }
+
+  private inner class BottomScrollListener : RecyclerView.OnScrollListener() {
+
+    private val BOTTOM_LIST_THRESHOLD = 10
+
+    override fun onScrolled(
+      recyclerView: RecyclerView?,
+      dx: Int,
+      dy: Int
+    ) {
+      val lastVisibleItemPosition = gridLayoutManager.findLastCompletelyVisibleItemPosition()
+      val modelsCount = adapter.itemCount
+
+      if (lastVisibleItemPosition > modelsCount - BOTTOM_LIST_THRESHOLD) {
+        presenter.bottomListReached()
+      }
+    }
   }
 }

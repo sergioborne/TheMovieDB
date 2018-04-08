@@ -10,5 +10,5 @@ interface MainListView {
 
   fun showError(messageResId: Int)
 
-  //fun openDetails(movieId: Int, movieTitle: String)
+  fun clearMovieList()
 }

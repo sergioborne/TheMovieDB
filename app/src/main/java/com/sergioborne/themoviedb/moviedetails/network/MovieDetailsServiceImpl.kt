@@ -2,7 +2,7 @@ package com.sergioborne.themoviedb.moviedetails.network
 
 import com.sergioborne.themoviedb.common.network.TheMovieDBAPI
 import com.sergioborne.themoviedb.moviedetails.data.MovieDetails
-import com.sergioborne.tmdbkotlinchallenge.data.Movie
+import com.sergioborne.tmdbkotlinchallenge.data.Page
 import io.reactivex.Observable
 
 class MovieDetailsServiceImpl(private val theMovieDBAPI: TheMovieDBAPI) : MovieDetailsService {
@@ -12,9 +12,9 @@ class MovieDetailsServiceImpl(private val theMovieDBAPI: TheMovieDBAPI) : MovieD
     }
   }
 
-  override fun getSimilarMovies(movieId: Int): Observable<List<Movie>> {
+  override fun getSimilarMovies(movieId: Int): Observable<Page> {
     return theMovieDBAPI.getSimilarMovies(movieId).flatMap { response ->
-      Observable.just(response.results)
+      Observable.just(response)
     }
   }
 }

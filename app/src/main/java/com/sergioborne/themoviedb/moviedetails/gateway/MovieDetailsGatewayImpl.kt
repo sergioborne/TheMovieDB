@@ -4,7 +4,7 @@ import com.sergioborne.themoviedb.common.OutcomeListener
 import com.sergioborne.themoviedb.common.SchedulerProvider
 import com.sergioborne.themoviedb.moviedetails.data.MovieDetails
 import com.sergioborne.themoviedb.moviedetails.network.MovieDetailsService
-import com.sergioborne.tmdbkotlinchallenge.data.Movie
+import com.sergioborne.tmdbkotlinchallenge.data.Page
 
 class MovieDetailsGatewayImpl(private val schedulerProvider: SchedulerProvider,
     private val service: MovieDetailsService) : MovieDetailsGateway {
@@ -15,7 +15,7 @@ class MovieDetailsGatewayImpl(private val schedulerProvider: SchedulerProvider,
         schedulerProvider.mainThreadScheduler()).subscribe(listener::success, listener::error)
   }
 
-  override fun loadSimilarMovies(movieId: Int, listener: OutcomeListener<List<Movie>>) {
+  override fun loadSimilarMovies(movieId: Int, listener: OutcomeListener<Page>) {
     service.getSimilarMovies(movieId).subscribeOn(
         schedulerProvider.backgroundThreadScheduler()).observeOn(
         schedulerProvider.mainThreadScheduler()).subscribe(listener::success, listener::error)

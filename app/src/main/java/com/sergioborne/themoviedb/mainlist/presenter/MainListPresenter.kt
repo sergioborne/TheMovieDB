@@ -1,1 +1,1 @@
-package com.sergioborne.themoviedb.mainlist.presenterinterface MainListPresenter {  fun init()  fun refreshList()}
+package com.sergioborne.themoviedb.mainlist.presenterinterface MainListPresenter {  fun init()  fun refreshList()  fun bottomListReached()}

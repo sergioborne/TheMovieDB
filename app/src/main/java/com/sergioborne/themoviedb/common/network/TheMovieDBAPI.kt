@@ -5,11 +5,12 @@ import com.sergioborne.tmdbkotlinchallenge.data.Page
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TheMovieDBAPI {
 
   @GET("discover/movie")
-  fun getMovies(): Observable<Page>
+  fun getMovies(@Query("page") page: Int): Observable<Page>
 
   @GET("movie/{movieId}")
   fun getMovieDetails(@Path("movieId") movieId: Int): Observable<MovieDetails>

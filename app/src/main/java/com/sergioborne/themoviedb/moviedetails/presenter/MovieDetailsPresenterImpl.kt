@@ -7,9 +7,12 @@ import com.sergioborne.themoviedb.moviedetails.gateway.MovieDetailsGateway
 import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsView
 import com.sergioborne.themoviedb.moviedetails.ui.SimilarMovieViewModel
 import com.sergioborne.tmdbkotlinchallenge.data.Movie
+import com.sergioborne.tmdbkotlinchallenge.data.Page
 
-class MovieDetailsPresenterImpl(private val movieDetailsView: MovieDetailsView,
-    private val gateway: MovieDetailsGateway) : MovieDetailsPresenter {
+class MovieDetailsPresenterImpl(
+  private val movieDetailsView: MovieDetailsView,
+  private val gateway: MovieDetailsGateway
+) : MovieDetailsPresenter {
 
   override fun init(movieId: Int) {
     updateDetails(movieId)
@@ -33,9 +36,9 @@ class MovieDetailsPresenterImpl(private val movieDetailsView: MovieDetailsView,
   }
 
   private fun loadSimilarMovies(movieId: Int) {
-    gateway.loadSimilarMovies(movieId, object : OutcomeListener<List<Movie>> {
-      override fun success(similarMovies: List<Movie>) {
-        movieDetailsView.showSimilarMovies(createViewModelsList(similarMovies))
+    gateway.loadSimilarMovies(movieId, object : OutcomeListener<Page> {
+      override fun success(page: Page) {
+        movieDetailsView.showSimilarMovies(createViewModelsList(page.results))
       }
 
       override fun error(error: Throwable) {
