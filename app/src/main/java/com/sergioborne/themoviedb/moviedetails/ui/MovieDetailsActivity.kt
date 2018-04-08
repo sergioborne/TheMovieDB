@@ -24,11 +24,11 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
     @JvmStatic
     fun startActivity(
-        context: Context,
-        movieId: Int,
-        movieTitle: String,
-        moviePosterUrl: String,
-        options: Bundle
+      context: Context,
+      movieId: Int,
+      movieTitle: String,
+      moviePosterUrl: String,
+      options: Bundle
     ) {
       val intent = Intent(context, MovieDetailsActivity::class.java)
       intent.putExtra(MOVIE_ID_INTENT_EXTRA, movieId)
@@ -52,10 +52,22 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.movie_details_activity)
     readIntentExtras()
+    setupToolbar()
     setupSimilarMoviesRecyclerView()
     title = movieTitle
     Picasso.get().load(posterPathUrl).into(toolbar_poster_image_view)
     presenter.init(movieId)
+  }
+
+  private fun setupToolbar() {
+    setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    supportActionBar?.setDisplayShowHomeEnabled(true)
+  }
+
+  override fun onSupportNavigateUp(): Boolean {
+    onBackPressed()
+    return true
   }
 
   private fun setupSimilarMoviesRecyclerView() {

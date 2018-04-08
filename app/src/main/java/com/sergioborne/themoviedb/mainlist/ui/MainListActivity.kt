@@ -16,6 +16,10 @@ import android.view.View
 
 class MainListActivity : AppCompatActivity(), MainListView {
 
+  companion object {
+    const val COLUMN_NUMBER = 3
+  }
+
   @Inject
   lateinit var presenter: MainListPresenter
   @Inject
@@ -40,7 +44,7 @@ class MainListActivity : AppCompatActivity(), MainListView {
       )
     }
     movies_list.adapter = adapter
-    gridLayoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+    gridLayoutManager = GridLayoutManager(this, COLUMN_NUMBER, GridLayoutManager.VERTICAL, false)
     movies_list.layoutManager = gridLayoutManager
     movies_list.addOnScrollListener(BottomScrollListener())
   }
@@ -80,6 +84,8 @@ class MainListActivity : AppCompatActivity(), MainListView {
         this, movieId, movieTitle, movieImageUrl, activityOptions.toBundle()!!
     )
   }
+
+
 
   private inner class BottomScrollListener : RecyclerView.OnScrollListener() {
 

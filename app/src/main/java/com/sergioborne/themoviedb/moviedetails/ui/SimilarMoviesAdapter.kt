@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.sergioborne.themoviedb.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.main_list_movie_item.view.*
+import kotlinx.android.synthetic.main.similar_movies_list_item.view.similar_movie_image
 
 class SimilarMoviesAdapter(
     context: Context) : RecyclerView.Adapter<SimilarMoviesAdapter.SimilarMovieViewHolder>() {
@@ -47,7 +48,7 @@ class SimilarMoviesAdapter(
   }
 
   class SimilarMovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val movieImage: ImageView = itemView.movie_image
+    val movieImage: ImageView = itemView.similar_movie_image
     val movieTitle: TextView = itemView.movie_title
     val container: View = itemView.container
   }
