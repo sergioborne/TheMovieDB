@@ -38,7 +38,7 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
     movieViewModel: MovieViewModel
   ) {
     holder.movieTitle.text = movieViewModel.title
-    Picasso.get().load(movieViewModel.posterPathUrl).into(holder.movieImage)
+    Picasso.get().load(movieViewModel.posterPathUrl).placeholder(R.drawable.ic_photo_black_48dp).into(holder.movieImage)
     holder.container.setOnClickListener {
       listener?.invoke(
           it, movieViewModel.movieId, movieViewModel.title, movieViewModel.posterPathUrl

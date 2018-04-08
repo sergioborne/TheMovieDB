@@ -13,14 +13,15 @@ import kotlinx.android.synthetic.main.main_list_movie_item.view.*
 import kotlinx.android.synthetic.main.similar_movies_list_item.view.similar_movie_image
 
 class SimilarMoviesAdapter(
-    context: Context) : RecyclerView.Adapter<SimilarMoviesAdapter.SimilarMovieViewHolder>() {
+  context: Context
+) : RecyclerView.Adapter<SimilarMoviesAdapter.SimilarMovieViewHolder>() {
 
   private var layoutInflater: LayoutInflater = LayoutInflater.from(context)
   private var list: List<SimilarMovieViewModel> = emptyList()
 
   override fun onCreateViewHolder(
-      parent: ViewGroup,
-      viewType: Int
+    parent: ViewGroup,
+    viewType: Int
   ) = SimilarMovieViewHolder(
       layoutInflater.inflate(R.layout.similar_movies_list_item, parent, false)
   )
@@ -28,18 +29,20 @@ class SimilarMoviesAdapter(
   override fun getItemCount() = list.size
 
   override fun onBindViewHolder(
-      holder: SimilarMovieViewHolder,
-      position: Int
+    holder: SimilarMovieViewHolder,
+    position: Int
   ) {
     bindItem(holder, list[position])
   }
 
   private fun bindItem(
-      holder: SimilarMovieViewHolder,
-      movieViewModel: SimilarMovieViewModel
+    holder: SimilarMovieViewHolder,
+    movieViewModel: SimilarMovieViewModel
   ) {
     holder.movieTitle.text = movieViewModel.title
-    Picasso.get().load(movieViewModel.imageUrl).into(holder.movieImage)
+    Picasso.get().load(movieViewModel.imageUrl).placeholder(R.drawable.ic_photo_black_48dp).into(
+        holder.movieImage
+    )
   }
 
   fun updateItems(newList: List<SimilarMovieViewModel>) {
