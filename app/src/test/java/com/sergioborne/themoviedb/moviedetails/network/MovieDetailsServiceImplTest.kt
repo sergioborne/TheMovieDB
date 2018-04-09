@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class MovieDetailsServiceImplTest {
 
   @Mock
-  lateinit var api: TheMovieDBAPI
+  private lateinit var api: TheMovieDBAPI
 
   private lateinit var movieDetailsService: MovieDetailsServiceImpl
 

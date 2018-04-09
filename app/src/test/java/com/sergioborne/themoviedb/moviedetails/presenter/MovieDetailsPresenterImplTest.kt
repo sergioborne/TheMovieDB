@@ -26,13 +26,13 @@ import org.mockito.junit.MockitoJUnitRunner
 class MovieDetailsPresenterImplTest {
 
   @Mock
-  lateinit var gateway: MovieDetailsGateway
+  private lateinit var gateway: MovieDetailsGateway
   @Mock
-  lateinit var view: MovieDetailsView
+  private lateinit var view: MovieDetailsView
   @Captor
-  lateinit var outcomeListenerDetailsArgumentCaptor: ArgumentCaptor<OutcomeListener<MovieDetails>>
+  private lateinit var outcomeListenerDetailsArgumentCaptor: ArgumentCaptor<OutcomeListener<MovieDetails>>
   @Captor
-  lateinit var outcomeListenerPageArgumentCaptor: ArgumentCaptor<OutcomeListener<Page>>
+  private lateinit var outcomeListenerPageArgumentCaptor: ArgumentCaptor<OutcomeListener<Page>>
 
   lateinit var presenter: MovieDetailsPresenterImpl
 

@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class MoviesServiceImplTest {
 
   @Mock
-  lateinit var api: TheMovieDBAPI
+  private lateinit var api: TheMovieDBAPI
 
   private lateinit var service: MoviesServiceImpl
 
@@ -31,6 +31,6 @@ class MoviesServiceImplTest {
     val page: Page = mock()
     `when`(api.getMovies(ArgumentMatchers.anyInt())).thenReturn(Observable.just(page))
     service.getPopularMovies(1)
-    verify(api).getMovieDetails(1)
+    verify(api).getMovies(1)
   }
 }

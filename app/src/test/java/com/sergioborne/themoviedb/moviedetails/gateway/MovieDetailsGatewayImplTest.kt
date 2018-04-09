@@ -19,11 +19,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class MovieDetailsGatewayImplTest {
 
   @Mock
-  lateinit var service: MovieDetailsService
+  private lateinit var service: MovieDetailsService
   @Mock
-  lateinit var movieDetailsOutcomeListener: OutcomeListener<MovieDetails>
+  private lateinit var movieDetailsOutcomeListener: OutcomeListener<MovieDetails>
   @Mock
-  lateinit var similarMoviesOutcomeListener: OutcomeListener<Page>
+  private lateinit var similarMoviesOutcomeListener: OutcomeListener<Page>
 
   private lateinit var gateway: MovieDetailsGatewayImpl
 
