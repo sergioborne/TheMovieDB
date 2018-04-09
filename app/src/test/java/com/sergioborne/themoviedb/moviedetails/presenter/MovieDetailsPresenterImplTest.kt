@@ -8,6 +8,7 @@ import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsView
 import com.sergioborne.themoviedb.utils.any
 import com.sergioborne.themoviedb.utils.capture
 import com.sergioborne.themoviedb.utils.eq
+import com.sergioborne.themoviedb.utils.mock
 import com.sergioborne.tmdbkotlinchallenge.data.Page
 import org.junit.Before
 import org.junit.Test
@@ -51,7 +52,7 @@ class MovieDetailsPresenterImplTest {
 
   @Test
   fun `view is updated when load movies is success`() {
-    val movieDetails = MovieDetails()
+    val movieDetails: MovieDetails = mock()
     presenter.init(movieId)
     verify(gateway).loadMovieDetails(eq(movieId), capture(outcomeListenerDetailsArgumentCaptor))
     outcomeListenerDetailsArgumentCaptor.value.success(movieDetails)
@@ -60,7 +61,7 @@ class MovieDetailsPresenterImplTest {
 
   @Test
   fun `view is updated when similar movies is success`() {
-    val page = Page(1, 1, 1, emptyList())
+    val page: Page = mock()
     presenter.init(movieId)
     verify(gateway).loadSimilarMovies(eq(movieId), capture(outcomeListenerPageArgumentCaptor))
     outcomeListenerPageArgumentCaptor.value.success(page)
