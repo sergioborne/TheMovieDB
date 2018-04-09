@@ -60,6 +60,10 @@ dependencies {
   //Picasso
   implementation "com.squareup.picasso:picasso:$project.picassoVersion"
 
+  //Leak Canary
+  releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$project.leakCanaryVersion"
+  debugImplementation "com.squareup.leakcanary:leakcanary-android:$project.leakCanaryVersion"
+
   //Testing
   testImplementation "junit:junit:$project.jUnitVersion"
   testImplementation "org.mockito:mockito-core:$project.mockitoVersion"
