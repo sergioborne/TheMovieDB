@@ -2,6 +2,7 @@ package com.sergioborne.themoviedb.moviedetails.presenter
 
 import com.sergioborne.themoviedb.R
 import com.sergioborne.themoviedb.common.OutcomeListener
+import com.sergioborne.themoviedb.common.data.ImageConfiguration
 import com.sergioborne.themoviedb.moviedetails.data.MovieDetails
 import com.sergioborne.themoviedb.moviedetails.gateway.MovieDetailsGateway
 import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsView
@@ -10,8 +11,8 @@ import com.sergioborne.tmdbkotlinchallenge.data.Movie
 import com.sergioborne.tmdbkotlinchallenge.data.Page
 
 class MovieDetailsPresenterImpl(
-  private val movieDetailsView: MovieDetailsView,
-  private val gateway: MovieDetailsGateway
+    private val movieDetailsView: MovieDetailsView,
+    private val gateway: MovieDetailsGateway
 ) : MovieDetailsPresenter {
 
   override fun init(movieId: Int) {
@@ -52,6 +53,6 @@ class MovieDetailsPresenterImpl(
   }
 
   private fun createViewModelFromMovie(movie: Movie): SimilarMovieViewModel {
-    return SimilarMovieViewModel(movie.title, "https://image.tmdb.org/t/p/w500" + movie.poster_path)
+    return SimilarMovieViewModel(movie.title, ImageConfiguration.IMAGE_URL_BASE + movie.poster_path)
   }
 }
