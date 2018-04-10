@@ -56,25 +56,25 @@ class MainListPresenterImplTest {
   }
 
   private fun verifyLoadFirstPage() {
-    verify(gateway).loadMovies(anyInt(), any())
-    verify(view).clearMovieList()
+    verify(gateway).loadTvShows(anyInt(), any())
+    verify(view).clearList()
   }
 
   @Test
-  fun `load movies success`() {
+  fun `load tv shows success`() {
     presenter.init()
-    verify(gateway).loadMovies(anyInt(), capture(outcomeListenerPageArgumentCaptor))
+    verify(gateway).loadTvShows(anyInt(), capture(outcomeListenerPageArgumentCaptor))
     outcomeListenerPageArgumentCaptor.value.success(page)
-    verify(view).updateMoviesList(anyList())
+    verify(view).updateList(anyList())
     verify(view).hideLoadingIndicator()
     assertFalse(presenter.isFetchingData)
   }
 
   @Test
-  fun `load movies error`() {
+  fun `load tv shows error`() {
     val error: Throwable = mock()
     presenter.init()
-    verify(gateway).loadMovies(anyInt(), capture(outcomeListenerPageArgumentCaptor))
+    verify(gateway).loadTvShows(anyInt(), capture(outcomeListenerPageArgumentCaptor))
     outcomeListenerPageArgumentCaptor.value.error(error)
     verify(view).showError(R.string.default_error_message)
     verify(view).hideLoadingIndicator()
@@ -89,7 +89,7 @@ class MainListPresenterImplTest {
 
     presenter.bottomListReached()
 
-    verify(gateway).loadMovies(eq(2), any())
+    verify(gateway).loadTvShows(eq(2), any())
     assertTrue(presenter.isFetchingData)
   }
 
@@ -100,7 +100,7 @@ class MainListPresenterImplTest {
 
     presenter.bottomListReached()
 
-    verify(gateway, never()).loadMovies(anyInt(), any())
+    verify(gateway, never()).loadTvShows(anyInt(), any())
     assertFalse(presenter.isFetchingData)
   }
 
@@ -111,7 +111,7 @@ class MainListPresenterImplTest {
 
     presenter.bottomListReached()
 
-    verify(gateway, never()).loadMovies(anyInt(), any())
+    verify(gateway, never()).loadTvShows(anyInt(), any())
   }
 
   @Test
@@ -119,7 +119,7 @@ class MainListPresenterImplTest {
     `when`(page.total_pages).thenReturn(3)
     presenter.currentPage = 1
     presenter.bottomListReached()
-    verify(gateway).loadMovies(anyInt(), capture(outcomeListenerPageArgumentCaptor))
+    verify(gateway).loadTvShows(anyInt(), capture(outcomeListenerPageArgumentCaptor))
     outcomeListenerPageArgumentCaptor.value.success(page)
     assertTrue(presenter.isThereMorePages)
   }
@@ -129,7 +129,7 @@ class MainListPresenterImplTest {
     `when`(page.total_pages).thenReturn(3)
     presenter.currentPage = 3
     presenter.bottomListReached()
-    verify(gateway).loadMovies(anyInt(), capture(outcomeListenerPageArgumentCaptor))
+    verify(gateway).loadTvShows(anyInt(), capture(outcomeListenerPageArgumentCaptor))
     outcomeListenerPageArgumentCaptor.value.success(page)
     assertFalse(presenter.isThereMorePages)
   }

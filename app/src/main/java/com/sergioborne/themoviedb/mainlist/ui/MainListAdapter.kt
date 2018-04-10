@@ -9,44 +9,45 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sergioborne.themoviedb.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.main_list_movie_item.view.*
+import kotlinx.android.synthetic.main.main_list_tv_show_item.view.*
 
-class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.MovieViewHolder>() {
+class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.TvShowViewHolder>() {
 
   private var layoutInflater: LayoutInflater = LayoutInflater.from(context)
-  private var list: List<MovieViewModel> = emptyList()
+  private var list: List<TvShowViewModel> = emptyList()
   private var listener: ((View, Int, String, String) -> Unit)? = null
 
   override fun onCreateViewHolder(
-    parent: ViewGroup,
-    viewType: Int
-  ) = MovieViewHolder(
-      layoutInflater.inflate(R.layout.main_list_movie_item, parent, false)
+      parent: ViewGroup,
+      viewType: Int
+  ) = TvShowViewHolder(
+      layoutInflater.inflate(R.layout.main_list_tv_show_item, parent, false)
   )
 
   override fun getItemCount() = list.size
 
   override fun onBindViewHolder(
-    holder: MovieViewHolder,
-    position: Int
+      holder: TvShowViewHolder,
+      position: Int
   ) {
     bindItem(holder, list[position])
   }
 
   private fun bindItem(
-    holder: MovieViewHolder,
-    movieViewModel: MovieViewModel
+      holder: TvShowViewHolder,
+      tvShowViewModel: TvShowViewModel
   ) {
-    holder.movieTitle.text = movieViewModel.title
-    Picasso.get().load(movieViewModel.posterPathUrl).placeholder(R.drawable.ic_photo_black_48dp).into(holder.movieImage)
+    holder.tvShowTitle.text = tvShowViewModel.title
+    Picasso.get().load(tvShowViewModel.posterPathUrl).placeholder(
+        R.drawable.ic_photo_black_48dp).into(holder.tvShowImage)
     holder.container.setOnClickListener {
       listener?.invoke(
-          it, movieViewModel.movieId, movieViewModel.title, movieViewModel.posterPathUrl
+          it, tvShowViewModel.movieId, tvShowViewModel.title, tvShowViewModel.posterPathUrl
       )
     }
   }
 
-  fun appendItems(newItems: List<MovieViewModel>) {
+  fun appendItems(newItems: List<TvShowViewModel>) {
     val sizeBefore = this.list.size
     this.list += newItems
     notifyItemRangeInserted(sizeBefore, this.list.size)
@@ -61,9 +62,9 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.M
     this.listener = listener
   }
 
-  class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val movieImage: ImageView = itemView.movie_image
-    val movieTitle: TextView = itemView.movie_title
+  class TvShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val tvShowImage: ImageView = itemView.tv_show_image
+    val tvShowTitle: TextView = itemView.tv_show_title
     val container: View = itemView.container
   }
 

@@ -5,8 +5,8 @@ import com.sergioborne.themoviedb.common.SchedulerProvider
 import com.sergioborne.themoviedb.common.network.TheMovieDBAPI
 import com.sergioborne.themoviedb.mainlist.gateway.MainListGateway
 import com.sergioborne.themoviedb.mainlist.gateway.MainListGatewayImpl
-import com.sergioborne.themoviedb.mainlist.network.MoviesService
-import com.sergioborne.themoviedb.mainlist.network.MoviesServiceImpl
+import com.sergioborne.themoviedb.mainlist.network.TvShowsService
+import com.sergioborne.themoviedb.mainlist.network.TvShowsServiceImpl
 import com.sergioborne.themoviedb.mainlist.presenter.MainListPresenter
 import com.sergioborne.themoviedb.mainlist.presenter.MainListPresenterImpl
 import com.sergioborne.themoviedb.mainlist.ui.MainListAdapter
@@ -17,16 +17,16 @@ import dagger.Provides
 @Module
 class MainListModule {
   @Provides
-  fun provideMoviesService(theMovieDBAPI: TheMovieDBAPI): MoviesService {
-    return MoviesServiceImpl(theMovieDBAPI)
+  fun provideTvShowsService(theMovieDBAPI: TheMovieDBAPI): TvShowsService {
+    return TvShowsServiceImpl(theMovieDBAPI)
   }
 
   @Provides
   fun provideMainListGateway(
     schedulerProvider: SchedulerProvider,
-    moviesService: MoviesService
+    tvShowsService: TvShowsService
   ): MainListGateway {
-    return MainListGatewayImpl(schedulerProvider, moviesService)
+    return MainListGatewayImpl(schedulerProvider, tvShowsService)
   }
 
   @Provides

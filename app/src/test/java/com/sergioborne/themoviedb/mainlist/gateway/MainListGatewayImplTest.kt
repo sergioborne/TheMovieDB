@@ -1,7 +1,7 @@
 package com.sergioborne.themoviedb.mainlist.gateway
 
 import com.sergioborne.themoviedb.common.OutcomeListener
-import com.sergioborne.themoviedb.mainlist.network.MoviesService
+import com.sergioborne.themoviedb.mainlist.network.TvShowsService
 import com.sergioborne.themoviedb.utils.TestSchedulerProvider
 import com.sergioborne.themoviedb.utils.mock
 import com.sergioborne.tmdbkotlinchallenge.data.Page
@@ -18,9 +18,9 @@ import org.mockito.junit.MockitoJUnitRunner
 class MainListGatewayImplTest {
 
   @Mock
-  private lateinit var service: MoviesService
+  private lateinit var service: TvShowsService
   @Mock
-  private lateinit var movieDetailsOutcomeListener: OutcomeListener<Page>
+  private lateinit var tvShowDetailsOutcomeListener: OutcomeListener<Page>
 
   private lateinit var gateway: MainListGatewayImpl
 
@@ -31,18 +31,18 @@ class MainListGatewayImplTest {
 
 
   @Test
-  fun `when load movies is success listener success method is called`() {
+  fun `when load tv shows is success listener success method is called`() {
     val page: Page = mock()
-    `when`(service.getPopularMovies(1)).thenReturn(Observable.just(page))
-    gateway.loadMovies(1, movieDetailsOutcomeListener)
-    verify(movieDetailsOutcomeListener).success(page)
+    `when`(service.getPopularTvShows(1)).thenReturn(Observable.just(page))
+    gateway.loadTvShows(1, tvShowDetailsOutcomeListener)
+    verify(tvShowDetailsOutcomeListener).success(page)
   }
 
   @Test
-  fun `when load movies return error listener error method is called`() {
+  fun `when load tv shows return error listener error method is called`() {
     val error: Throwable = mock()
-    `when`(service.getPopularMovies(1)).thenReturn(Observable.error(error))
-    gateway.loadMovies(1, movieDetailsOutcomeListener)
-    verify(movieDetailsOutcomeListener).error(error)
+    `when`(service.getPopularTvShows(1)).thenReturn(Observable.error(error))
+    gateway.loadTvShows(1, tvShowDetailsOutcomeListener)
+    verify(tvShowDetailsOutcomeListener).error(error)
   }
 }

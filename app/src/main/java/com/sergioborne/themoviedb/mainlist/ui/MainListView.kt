@@ -2,7 +2,7 @@ package com.sergioborne.themoviedb.mainlist.ui
 
 interface MainListView {
 
-  fun updateMoviesList(list: List<MovieViewModel>)
+  fun updateList(list: List<TvShowViewModel>)
 
   fun showLoadingIndicator()
 
@@ -10,5 +10,5 @@ interface MainListView {
 
   fun showError(messageResId: Int)
 
-  fun clearMovieList()
+  fun clearList()
 }

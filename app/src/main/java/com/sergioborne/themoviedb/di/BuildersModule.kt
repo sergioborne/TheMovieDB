@@ -3,9 +3,9 @@ package com.sergioborne.themoviedb.di
 import com.sergioborne.themoviedb.mainlist.di.MainListModule
 import com.sergioborne.themoviedb.mainlist.di.MainListViewModule
 import com.sergioborne.themoviedb.mainlist.ui.MainListActivity
-import com.sergioborne.themoviedb.moviedetails.di.MovieDetailsModule
-import com.sergioborne.themoviedb.moviedetails.di.MovieDetailsViewModule
-import com.sergioborne.themoviedb.moviedetails.ui.MovieDetailsActivity
+import com.sergioborne.themoviedb.tvshowdetails.di.TvShowDetailsModule
+import com.sergioborne.themoviedb.tvshowdetails.di.TvShowDetailsViewModule
+import com.sergioborne.themoviedb.tvshowdetails.ui.TvShowDetailsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,6 +16,7 @@ abstract class BuildersModule {
   @ContributesAndroidInjector(modules = [MainListModule::class, MainListViewModule::class])
   abstract fun bindMainListActivity(): MainListActivity
 
-  @ContributesAndroidInjector(modules = [MovieDetailsModule::class, MovieDetailsViewModule::class])
-  abstract fun bindMovieDetailsActivity(): MovieDetailsActivity
+  @ContributesAndroidInjector(
+      modules = [TvShowDetailsModule::class, TvShowDetailsViewModule::class])
+  abstract fun bindTvShowDetailsActivity(): TvShowDetailsActivity
 }
