@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainlist.ui.MainListActivity">
+    android:padding="@dimen/default_margin_small"
+    tools:context=".mainlist.ui.MainListActivity"
+    >
 
   <android.support.v4.widget.SwipeRefreshLayout
       android:id="@+id/swipe_refresh_layout"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-  >
+      >
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tv_shows_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-    />
+        />
   </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -6,10 +6,9 @@
 
   <dimen name="tv_show_details_poster_width">160dp</dimen>
   <dimen name="tv_show_details_poster_height">100dp</dimen>
-  <dimen name="tv_show_details_similar_movies_section_height">180dp</dimen>
-
+  <dimen name="tv_show_details_similar_movies_section_height">200dp</dimen>
 
   <dimen name="tv_show_details_similar_item_width">110dp</dimen>
-  <dimen name="tv_show_details_similar_item_image_height">140dp</dimen>
+  <dimen name="tv_show_details_similar_item_image_height">130dp</dimen>
 
 </resources>

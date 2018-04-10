@@ -18,8 +18,8 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.T
   private var listener: ((View, Int, String, String) -> Unit)? = null
 
   override fun onCreateViewHolder(
-      parent: ViewGroup,
-      viewType: Int
+    parent: ViewGroup,
+    viewType: Int
   ) = TvShowViewHolder(
       layoutInflater.inflate(R.layout.main_list_tv_show_item, parent, false)
   )
@@ -27,19 +27,21 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.T
   override fun getItemCount() = list.size
 
   override fun onBindViewHolder(
-      holder: TvShowViewHolder,
-      position: Int
+    holder: TvShowViewHolder,
+    position: Int
   ) {
     bindItem(holder, list[position])
   }
 
   private fun bindItem(
-      holder: TvShowViewHolder,
-      tvShowViewModel: TvShowViewModel
+    holder: TvShowViewHolder,
+    tvShowViewModel: TvShowViewModel
   ) {
     holder.tvShowTitle.text = tvShowViewModel.title
+    holder.tvShowRating.text = "${tvShowViewModel.rating} \u2605"
     Picasso.get().load(tvShowViewModel.posterPathUrl).placeholder(
-        R.drawable.ic_photo_black_48dp).into(holder.tvShowImage)
+        R.drawable.ic_photo_black_48dp
+    ).into(holder.tvShowImage)
     holder.container.setOnClickListener {
       listener?.invoke(
           it, tvShowViewModel.movieId, tvShowViewModel.title, tvShowViewModel.posterPathUrl
@@ -65,6 +67,7 @@ class MainListAdapter(context: Context) : RecyclerView.Adapter<MainListAdapter.T
   class TvShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvShowImage: ImageView = itemView.tv_show_image
     val tvShowTitle: TextView = itemView.tv_show_title
+    val tvShowRating: TextView = itemView.tv_show_rating
     val container: View = itemView.container
   }
 
