@@ -28,10 +28,11 @@ Tried to follow Clean Code principles and modularize the app per feature.
 Using DI for the different components allow to Unit Test them easily as well as keeping the different features decoupled.
 I've mainly focused on having a good architecture, there is plenty of things to improve the UI but I 've prefered to set a good core for the app where you can easily improve/replace the UI without affecting the bussines logic.
 
-### Things to improve
+### Things to improve (with more time XD)
   - Hanlding configuration changes (not reloading the data)
   - Add DB and a Repository layer to persist data
   - Improve UI
   - Add more features
   - Add reporting tool (Fabric)
   - Use architecture components for better context awareness
+  - Improve error handling
