@@ -36,3 +36,4 @@ I've mainly focused on having a good architecture, there is plenty of things to 
   - Add reporting tool (Fabric)
   - Use architecture components for better context awareness
   - Improve error handling
+  - UI Testing
